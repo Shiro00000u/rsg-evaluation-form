@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RSG Evaluation Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 20px;
+        }
+        .hidden { display: none; }
+        .container { max-width: 600px; margin: auto; }
+        label { font-weight: bold; }
+        select, input, textarea { width: 100%; margin: 5px 0; padding: 8px; }
+        .button { padding: 10px 15px; margin: 10px 0; background: blue; color: white; border: none; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Riverside Student Government Evaluation</h2>
+
+        <!-- Page 1: Consent -->
+        <div id="page1">
+            <p>By proceeding with this evaluation, you agree that your responses will be used solely for assessment purposes while ensuring confidentiality.</p>
+            <button class="button" onclick="nextPage(2)">I Agree</button>
+        </div>
+
+        <!-- Page 2: Personal Information -->
+        <div id="page2" class="hidden">
+            <label>Full Name:</label>
+            <input type="text" id="fullName" required>
+
+            <label>Select Your Committee:</label>
+            <select id="committee" onchange="nextPage(4)">
+                <option value="">Select</option>
+                <option value="Cultural Affairs">Committee on Cultural Affairs</option>
+                <option value="Sports Affairs">Committee on Sports Affairs</option>
+                <option value="Election">Commission on Election</option>
+                <option value="Audit">Commission on Audit</option>
+                <option value="Finance">Committee on Finance</option>
+                <option value="Information">Committee on Information</option>
+                <option value="Publication">Committee on Publication</option>
+                <option value="Student Welfare">Committee on Student Issues and Welfare</option>
+                <option value="Research">Committee on Research and External Affairs</option>
+                <option value="Executive">Executive Committee</option>
+                <option value="Logistics">Committee on Logistics</option>
+            </select>
+        </div>
+
+        <!-- Page 3: Executive Evaluation -->
+        <div id="page3" class="hidden">
+            <h3>Evaluate the Executive Officers</h3>
+            <label>President's Contribution:</label>
+            <select><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select>
+
+            <label>Vice President's Work Ethics:</label>
+            <select><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select>
+
+            <label>Secretary's Leadership:</label>
+            <select><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select>
+
+            <button class="button" onclick="nextPage(4)">Next</button>
+        </div>
+
+        <!-- Page 4: Committee-Specific Evaluation -->
+        <div id="page4" class="hidden">
+            <h3>Evaluate Your Committee Officers</h3>
+            <label>Secretary's Work Ethics:</label>
+            <select><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select>
+
+            <label>Undersecretary's Contribution:</label>
+            <select><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select>
+
+            <button class="button" onclick="nextPage(5)">Next</button>
+        </div>
+
+        <!-- Page 5: General Evaluation -->
+        <div id="page5" class="hidden">
+            <h3>Overall Organization Evaluation</h3>
+            <label>Overall Effectiveness:</label>
+            <select><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select>
+
+            <label>Comments:</label>
+            <textarea rows="4"></textarea>
+
+            <button class="button" onclick="submitForm()">Submit</button>
+        </div>
+    </div>
+
+    <script>
+        function nextPage(page) {
+            document.querySelectorAll(".container > div").forEach(div => div.classList.add("hidden"));
+            document.getElementById("page" + page).classList.remove("hidden");
+        }
+
+        function submitForm() {
+            alert("Evaluation submitted successfully!");
+        }
+    </script>
+</body>
+</html>
